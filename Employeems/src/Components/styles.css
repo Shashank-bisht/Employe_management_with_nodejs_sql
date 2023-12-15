@@ -1,0 +1,11 @@
+.loginPage{
+    background: url('images/hero.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+}
+
+.loginForm{
+    background-color: rgb(162, 162, 224);
+    color: white;
+}
