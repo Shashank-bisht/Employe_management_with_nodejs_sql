@@ -1,5 +1,5 @@
 import mysql from 'mysql';
-
+//importing mysql package from nodejs
 const con = mysql.createConnection({
     host: 'localhost',
     user: 'root',

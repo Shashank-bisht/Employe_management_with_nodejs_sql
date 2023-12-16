@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import './styles.css'
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios'
+axios.defaults.withCredentials = true;
 const Login = () => {
     const [values, setValues]= useState({
         email: "",
         password: ""
     }) 
     const [error, setError] = useState(null)
+    // Calls the useNavigate hook to obtain the navigate function. 
     const navigate = useNavigate()
     axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
@@ -15,11 +17,10 @@ const Login = () => {
       axios.post('http://localhost:8000/auth/adminlogin', values)
         .then(result => {
           if(result.data.loginStatus ){
-            navigate('/dashboard')
+          navigate('/dashboard')
           }else{
           setError(result.data.Error)
           }
-          
         })
         .catch(err => console.log(err));
     };
@@ -35,7 +36,7 @@ const Login = () => {
         <div className='mb-3'>
             <label htmlFor="email">Email</label>
             <input type="email" name="email" id="email" className='form-control rounded-0' onChange={(e)=> setValues({...values, email: e.target.value})} />
-            {/* keep the values same but add new email to end of it by updating object*/}
+            {/* keep the values same but add new email to end of it by updating object , first we have destructured the object and then added at the end of it*/}
         </div>
         <div className='mb-3'>
             <label htmlFor="password">Password</label>
